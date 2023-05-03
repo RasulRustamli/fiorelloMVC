@@ -1,0 +1,16 @@
+﻿@using fiorelloMVC.Modals
+@model Product 
+
+
+
+<h1>@Model.Name</h1>
+@foreach (var item in Model.Tags)
+{
+    <h3>@item.Name</h3>
+
+}
+<h4>Categories</h4>
+@foreach(var item in Model.Catagories)
+{
+    <h3>@item.Name</h3>
+}
