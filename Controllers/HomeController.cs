@@ -15,15 +15,10 @@ public class HomeController : Controller
     }
     public async Task<IActionResult> Index()
     { 
-        List<Catagory> catagories = await _dbContext.Catagories.Include(c=>c.Products).ToListAsync();
-        List<Product> products = await _dbContext.Products.Include(p=>p.Catagories).ToListAsync();
-
-        HomeVM homeVM = new HomeVM()
-        {
-            Products = products,
-            Catagories = catagories
-        };
-        return View(homeVM);
+        
+        var catagory=_dbContext.Catagories.Include(c=>c.Products).ThenInclude(c=>c.Tags).ToList();
+       
+        return View();
     }
 
 

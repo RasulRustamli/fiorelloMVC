@@ -12,4 +12,5 @@ public class FiorellaDbContext : DbContext
     public DbSet<Catagory> Catagories { get; set; }
     public DbSet<Tag> Tags { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<Image> Images { get; set; }
 }

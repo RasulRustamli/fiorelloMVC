@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fiorelloMVC.DataContext;
 
@@ -10,9 +11,10 @@ using fiorelloMVC.DataContext;
 namespace fiorelloMVC.Migrations
 {
     [DbContext(typeof(FiorellaDbContext))]
-    partial class FiorellaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230511121245_updateTable")]
+    partial class updateTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,28 +38,6 @@ namespace fiorelloMVC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Catagories");
-                });
-
-            modelBuilder.Entity("fiorelloMVC.Modals.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("fiorelloMVC.Modals.Product", b =>
@@ -122,17 +102,6 @@ namespace fiorelloMVC.Migrations
                     b.ToTable("ProductTag");
                 });
 
-            modelBuilder.Entity("fiorelloMVC.Modals.Image", b =>
-                {
-                    b.HasOne("fiorelloMVC.Modals.Product", "Product")
-                        .WithMany("Images")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("fiorelloMVC.Modals.Product", b =>
                 {
                     b.HasOne("fiorelloMVC.Modals.Catagory", "Catagories")
@@ -162,11 +131,6 @@ namespace fiorelloMVC.Migrations
             modelBuilder.Entity("fiorelloMVC.Modals.Catagory", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("fiorelloMVC.Modals.Product", b =>
-                {
-                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

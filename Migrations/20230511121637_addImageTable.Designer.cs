@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fiorelloMVC.DataContext;
 
@@ -10,9 +11,10 @@ using fiorelloMVC.DataContext;
 namespace fiorelloMVC.Migrations
 {
     [DbContext(typeof(FiorellaDbContext))]
-    partial class FiorellaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230511121637_addImageTable")]
+    partial class addImageTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
